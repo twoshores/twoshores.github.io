@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Two Shores · Interprétariat, traduction et représentation commerciale FR/EN</title>
+<meta name="description" content="Two Shores relie les entreprises françaises au monde anglophone : interprétariat de liaison, traduction, accompagnement sur les salons et prospection commerciale, depuis la Côte d'Azur.">
+<meta name="theme-color" content="#2A5867">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Two Shores · Be understood on both shores">
+<meta property="og:description" content="Interprétariat, traduction, salons et prospection commerciale entre la France et le monde anglophone, depuis la Côte d'Azur.">
+<meta property="og:image" content="https://twoshores.github.io/assets/og.jpg">
+<meta property="og:url" content="https://twoshores.github.io/">
+<link rel="canonical" href="https://twoshores.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+@font-face{font-family:"Libre Caslon Display";src:url(assets/fonts/libre-caslon-display-latin-400-normal.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Libre Caslon Text";src:url(assets/fonts/libre-caslon-text-latin-400-normal.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Libre Caslon Text";src:url(assets/fonts/libre-caslon-text-latin-400-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Instrument Sans";src:url(assets/fonts/instrument-sans-latin-400-normal.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Instrument Sans";src:url(assets/fonts/instrument-sans-latin-500-normal.woff2) format("woff2");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Instrument Sans";src:url(assets/fonts/instrument-sans-latin-600-normal.woff2) format("woff2");font-weight:600;font-style:normal;font-display:swap}
+html,body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+
+/* Layout: two facing shores split by a living strip of sea; below, one left-aligned column like a ship's log */
+:root{
+  --chalk:#F1F5F4; --paper:#FFFFFF; --ink:#13222A; --muted:#536A73;
+  --sea:#2A5867; --foam:#D3E2E4; --brass:#9C6F22; --line:#C7D5D8;
+  --display:"Libre Caslon Display","Libre Caslon Text",Georgia,"Times New Roman",serif;
+  --serif:"Libre Caslon Text",Georgia,"Times New Roman",serif;
+  --sans:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --chalk:#0E1A20; --paper:#132229; --ink:#E5ECED; --muted:#98AEB5;
+    --sea:#6FA3B4; --foam:#1B3540; --brass:#D6A955; --line:#24414B; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --chalk:#0E1A20; --paper:#132229; --ink:#E5ECED; --muted:#98AEB5;
+  --sea:#6FA3B4; --foam:#1B3540; --brass:#D6A955; --line:#24414B; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--chalk);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--chalk)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* Header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--chalk) 88%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-size:24px;letter-spacing:.01em}
+.brand svg{width:30px;height:20px;flex:none}
+.brand svg path{stroke:var(--sea);stroke-width:2;fill:none;stroke-linecap:round}
+nav{display:flex;align-items:center;gap:22px}
+nav a{text-decoration:none;font-size:15px;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px;background:var(--paper)}
+.lang button{font:600 13px/1 var(--sans);letter-spacing:.04em;border:0;background:transparent;color:var(--muted);padding:7px 11px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--sea);color:var(--chalk)}
+@media (max-width:760px){nav a{display:none}}
+
+/* Hero */
+.hero{padding-block:72px 64px}
+.shores{display:grid;grid-template-columns:1fr 132px 1fr;gap:36px;align-items:stretch}
+.shore{display:flex;flex-direction:column;justify-content:flex-end;gap:18px;min-width:0}
+.shore.en{text-align:left}
+.coord{font-size:14px;color:var(--brass);font-variant-numeric:tabular-nums;margin:0}
+.hero h1,.hero .h1-en{margin:0;font-weight:400;line-height:1.04;text-wrap:balance}
+.hero h1{font-family:var(--display);font-size:clamp(38px,5.6vw,68px)}
+.hero .h1-en{font-family:var(--serif);font-style:italic;font-size:clamp(34px,5vw,60px);color:var(--sea)}
+.channel{width:100%;height:100%;min-height:300px;display:block;border-radius:66px;background:var(--foam)}
+.lede{margin:56px 0 0;max-width:640px;font-size:20px;line-height:1.55;color:var(--ink)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-block;text-decoration:none;font-weight:600;font-size:16px;padding:14px 22px;border-radius:999px;border:1px solid var(--sea)}
+.btn.primary{background:var(--sea);color:var(--chalk)}
+.btn.primary:hover{background:var(--ink);border-color:var(--ink)}
+.btn.ghost{color:var(--sea)}
+.btn.ghost:hover{background:var(--foam)}
+@media (max-width:760px){
+  .hero{padding-block:40px 48px}
+  .shores{grid-template-columns:1fr;gap:22px}
+  .channel{min-height:84px;height:84px;border-radius:42px}
+  .shore.en{text-align:right;align-items:flex-end}
+  .lede{margin-top:36px;font-size:18px}
+}
+
+/* Sections */
+section.block{padding-block:84px;border-top:1px solid var(--line)}
+.block h2{font-family:var(--display);font-weight:400;font-size:clamp(32px,4vw,48px);line-height:1.1;margin:0 0 14px;text-wrap:balance;max-width:20ch}
+.intro{color:var(--muted);max-width:60ch;margin:0 0 44px}
+
+/* Services */
+.services{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.services li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:32px;padding-block:28px;border-bottom:1px solid var(--line);align-items:baseline}
+.services h3{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.25;margin:0}
+.services p{margin:0;color:var(--muted);max-width:56ch}
+.price{font-weight:600;color:var(--sea);white-space:nowrap;font-variant-numeric:tabular-nums;text-align:right}
+@media (max-width:860px){
+  .services li{grid-template-columns:1fr;gap:8px}
+  .price{text-align:left}
+}
+.note{font-size:14px;color:var(--muted);margin:18px 0 0}
+
+/* Calendar */
+.yearwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px}
+.year{display:grid;grid-template-columns:repeat(12,minmax(78px,1fr));min-width:940px;border-top:1px solid var(--ink)}
+.month{border-left:1px solid var(--line);padding:10px 10px 18px;min-height:150px;display:flex;flex-direction:column;gap:8px}
+.month:first-child{border-left:0;padding-left:0}
+.month b{font-weight:500;font-size:13px;color:var(--muted)}
+.event{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--brass);padding:8px 9px;font-size:13px;line-height:1.3}
+.event span{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+.month.off .event{display:none}
+
+/* Steps */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;counter-reset:s}
+.steps li{counter-increment:s;display:flex;flex-direction:column;gap:10px}
+.steps li::before{content:counter(s);font-family:var(--display);font-size:56px;line-height:1;color:var(--brass)}
+.steps h3{font-family:var(--serif);font-weight:400;font-size:22px;margin:0}
+.steps p{margin:0;color:var(--muted)}
+@media (max-width:760px){.steps{grid-template-columns:1fr;gap:30px}}
+
+/* About */
+.about{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:56px;align-items:start}
+.about .story p{margin:0 0 18px;max-width:60ch}
+.about .story p:first-child{font-family:var(--serif);font-size:22px;line-height:1.5}
+dl.facts{margin:0;display:grid;gap:18px;padding:28px;background:var(--paper);border:1px solid var(--line);border-radius:6px}
+dl.facts div{display:grid;gap:2px}
+dt{font-size:13px;color:var(--muted)}
+dd{margin:0;font-weight:500}
+@media (max-width:860px){.about{grid-template-columns:1fr;gap:32px}}
+
+/* Pricing */
+.pricing{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:56px;align-items:start}
+.pricing .intro{margin-bottom:28px}
+.factors{list-style:none;margin:0;padding:0;display:grid;border-top:1px solid var(--ink)}
+.factors li{padding-block:20px;border-bottom:1px solid var(--line)}
+.factors h3{font-family:var(--serif);font-weight:400;font-size:22px;margin:0 0 4px}
+.factors p{margin:0;color:var(--muted)}
+@media (max-width:860px){.pricing{grid-template-columns:1fr;gap:32px}}
+
+/* Contact with portrait */
+.contact-grid{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:56px;align-items:center}
+.portrait{margin:0;width:100%;max-width:300px}
+.portrait img{display:block;width:100%;max-width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:150px 150px 6px 6px}
+.portrait figcaption{margin-top:12px;font-size:14px;opacity:.85}
+@media (max-width:760px){.contact-grid{grid-template-columns:1fr;gap:32px}.portrait{max-width:240px}}
+
+/* Contact */
+.contact{background:var(--sea);color:var(--chalk);border-top:0}
+.contact h2{color:var(--chalk)}
+.contact .intro{color:color-mix(in srgb,var(--chalk) 78%,var(--sea))}
+.mailrow{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.mail{font-family:var(--serif);font-size:clamp(24px,3.4vw,38px);user-select:all;overflow-wrap:anywhere}
+.copy{font:600 15px/1 var(--sans);padding:12px 18px;border-radius:999px;border:1px solid var(--chalk);background:transparent;color:var(--chalk);cursor:pointer}
+.copy:hover{background:var(--chalk);color:var(--sea)}
+.contact small{display:block;margin-top:16px;font-size:14px;opacity:.85}
+footer{padding-block:28px;font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Two Shores">
+      <svg viewBox="0 0 30 20" aria-hidden="true"><path d="M1 7c3.5-4 7-4 10.5 0s7 4 10.5 0 5.5-3 7-1.5"/><path d="M1 14c3.5-4 7-4 10.5 0s7 4 10.5 0 5.5-3 7-1.5"/></svg>
+      Two Shores
+    </a>
+    <nav aria-label="Navigation">
+      <a href="#services" data-i18n="nav_services">Services</a>
+      <a href="#tarifs" data-i18n="nav_prices">Tarifs</a>
+      <a href="#salons" data-i18n="nav_shows">Salons</a>
+      <a href="#about" data-i18n="nav_about">À propos</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+      <div class="lang" role="group" aria-label="Langue / Language">
+        <button type="button" id="lang-fr" data-lang="fr" aria-pressed="true">FR</button>
+        <button type="button" id="lang-en" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="shores">
+        <div class="shore fr">
+          <h1 lang="fr">Faites-vous comprendre des deux côtés.</h1>
+        </div>
+        <canvas class="channel" id="channel" aria-hidden="true"></canvas>
+        <div class="shore en">
+          <p class="h1-en" lang="en">Be understood on both shores.</p>
+        </div>
+      </div>
+      <p class="lede" data-i18n="lede">Two Shores relie les entreprises françaises au monde anglophone, et inversement : interprétariat, traduction, représentation commerciale et prospection, depuis la Côte d'Azur.</p>
+      <div class="cta">
+        <a class="btn primary" href="#contact" data-i18n="cta_talk">Parler de votre projet</a>
+        <a class="btn ghost" href="#services" data-i18n="cta_services">Voir les services</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="services">
+    <div class="wrap">
+      <h2 data-i18n="s_title">Ce que Two Shores fait pour vous</h2>
+      <p class="intro" data-i18n="s_intro">Une seule personne, bilingue de naissance, qui parle, représente et prospecte pour vous dans les deux langues.</p>
+      <ul class="services">
+        <li>
+          <h3 data-i18n="sv1_t">Interprétariat de liaison</h3>
+          <p data-i18n="sv1_d">Rendez-vous d'affaires, négociations, visites de sites, dîners clients. Le sens, le ton et les nuances passent, pas seulement les mots.</p>
+        </li>
+        <li>
+          <h3 data-i18n="sv2_t">Traduction et adaptation</h3>
+          <p data-i18n="sv2_d">Présentations, propositions commerciales, sites web, fiches produits. Un texte qui sonne natif des deux côtés de la Manche.</p>
+        </li>
+        <li>
+          <h3 data-i18n="sv3_t">Accompagnement sur les salons</h3>
+          <p data-i18n="sv3_d">Accueil des visiteurs sur votre stand, interprétation, prise de rendez-vous et logistique pendant les grands salons de Cannes et Monaco.</p>
+        </li>
+        <li>
+          <h3 data-i18n="sv4_t">Représentation et prospection</h3>
+          <p data-i18n="sv4_d">Recherche de prospects, premiers contacts dans leur langue, rendez-vous et représentation sur place. Un mois test est possible.</p>
+        </li>
+        <li>
+          <h3 data-i18n="sv5_t">Ouverture de marché</h3>
+          <p data-i18n="sv5_d">Vous arrivez sur la Côte d'Azur, ou vous visez le Royaume-Uni : étude rapide, liste de prospects, messages et premiers rendez-vous.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="tarifs">
+    <div class="wrap pricing">
+      <div>
+        <h2 data-i18n="p_title">Des tarifs sur mesure</h2>
+        <p class="intro" data-i18n="p_intro">Chaque mission est différente. Une demi-journée de rendez-vous ne se chiffre pas comme une semaine de salon ou trois mois de prospection. Après un premier échange, vous recevez une proposition claire, avec un prix fixe, sous 48 heures.</p>
+        <a class="btn primary" href="#contact" data-i18n="p_cta">Demander une proposition</a>
+      </div>
+      <ul class="factors">
+        <li><h3 data-i18n="p1_t">La durée</h3><p data-i18n="p1_d">Quelques heures, une journée, une semaine ou un accompagnement au mois.</p></li>
+        <li><h3 data-i18n="p2_t">Le lieu</h3><p data-i18n="p2_d">Sur la Côte d'Azur, ailleurs en France, au Royaume-Uni ou à distance.</p></li>
+        <li><h3 data-i18n="p3_t">Le volume</h3><p data-i18n="p3_d">Le nombre de rendez-vous, de pages à traduire ou de prospects à contacter.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="salons">
+    <div class="wrap">
+      <h2 data-i18n="c_title">Sur place quand ça compte</h2>
+      <p class="intro" data-i18n="c_intro">La Côte d'Azur accueille chaque année des salons où se croisent acheteurs et décideurs du monde entier. Two Shores y accompagne les exposants, d'un rendez-vous à la semaine complète.</p>
+      <div class="yearwrap" tabindex="0" aria-label="Calendrier des salons">
+        <div class="year" id="year"></div>
+      </div>
+      <p class="note" data-i18n="c_note">Calendrier indicatif : les dates exactes changent chaque année.</p>
+    </div>
+  </section>
+
+  <section class="block" id="method">
+    <div class="wrap">
+      <h2 data-i18n="m_title">Comment on travaille</h2>
+      <p class="intro" data-i18n="m_intro">Simple, rapide, sans engagement avant la proposition.</p>
+      <ol class="steps">
+        <li><h3 data-i18n="m1_t">Un échange de 15 minutes</h3><p data-i18n="m1_d">Vous expliquez le contexte : qui vous rencontrez, où, quand et dans quelle langue.</p></li>
+        <li><h3 data-i18n="m2_t">Une proposition sous 48 h</h3><p data-i18n="m2_d">Périmètre, dates et prix fixés à l'avance. Pas de surprise sur la facture.</p></li>
+        <li><h3 data-i18n="m3_t">On s'en occupe</h3><p data-i18n="m3_d">Sur place sur la Côte d'Azur, en déplacement en France ou au Royaume-Uni, ou à distance.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block" id="about">
+    <div class="wrap about">
+      <div class="story">
+        <h2 data-i18n="a_title">Les deux rives, dans la même personne</h2>
+        <p data-i18n="a_p1">Je m'appelle Leland Thomas. Père anglais, mère française : j'ai grandi entre les deux langues et les deux cultures, et j'ai vécu à Londres.</p>
+        <p data-i18n="a_p2">Sur la Côte d'Azur, j'ai coordonné la logistique d'événements comme le Grand Prix de Monaco et Cannes Lions, jusqu'à une vingtaine de véhicules à la fois, pour des dirigeants, des sportifs et des artistes. J'y ai appris l'essentiel : être fiable quand tout change à la dernière minute.</p>
+        <p data-i18n="a_p3">Two Shores met cette expérience au service des entreprises qui veulent se faire comprendre, et se faire choisir, de l'autre côté.</p>
+      </div>
+      <dl class="facts">
+        <div><dt data-i18n="f1_t">Langues</dt><dd data-i18n="f1_d">Français et anglais, niveau natif</dd></div>
+        <div><dt data-i18n="f2_t">Basé à</dt><dd data-i18n="f2_d">Antibes, entre Cannes, Nice et Monaco</dd></div>
+        <div><dt data-i18n="f3_t">Interventions</dt><dd data-i18n="f3_d">En présentiel partout en France et au Royaume-Uni, ou à distance</dd></div>
+        <div><dt data-i18n="f4_t">Secteurs</dt><dd data-i18n="f4_d">Événementiel, communication, hôtellerie, yachting, immobilier, sport, tech</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="block contact" id="contact">
+    <div class="wrap contact-grid">
+      <figure class="portrait">
+        <img src="assets/leland.jpg" loading="lazy" alt="Leland Thomas, fondateur de Two Shores" width="640" height="800">
+        <figcaption data-i18n="k_small">Leland Thomas, fondateur de Two Shores</figcaption>
+      </figure>
+      <div>
+      <h2 data-i18n="k_title">Parlons de votre projet</h2>
+      <p class="intro" data-i18n="k_intro">Un rendez-vous à préparer, un salon qui approche, un marché à ouvrir ? Écrivez-moi, on en parle.</p>
+      <div class="mailrow">
+        <span class="mail" id="mail">twoshores.contact@gmail.com</span>
+        <button type="button" class="copy" id="copy" data-i18n="k_copy">Copier l'adresse</button>
+      </div>
+      <small data-i18n="k_reply">Réponse sous 24 heures, en français ou en anglais.</small>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Two Shores · <a href="mentions-legales.html">Mentions légales</a></span>
+    <span data-i18n="foot">Interprétariat, traduction et représentation commerciale, depuis la Côte d'Azur</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var T = {
+    fr:{
+      nav_prices:"Tarifs",
+      p_title:"Des tarifs sur mesure",
+      p_intro:"Chaque mission est différente. Une demi-journée de rendez-vous ne se chiffre pas comme une semaine de salon ou trois mois de prospection. Après un premier échange, vous recevez une proposition claire, avec un prix fixe, sous 48 heures.",
+      p_cta:"Demander une proposition",
+      p1_t:"La durée", p1_d:"Quelques heures, une journée, une semaine ou un accompagnement au mois.",
+      p2_t:"Le lieu", p2_d:"Sur la Côte d'Azur, ailleurs en France, au Royaume-Uni ou à distance.",
+      p3_t:"Le volume", p3_d:"Le nombre de rendez-vous, de pages à traduire ou de prospects à contacter.",
+      k_reply:"Réponse sous 24 heures, en français ou en anglais.",
+      nav_services:"Services", nav_shows:"Salons", nav_about:"À propos", nav_contact:"Contact",
+      lede:"Two Shores relie les entreprises françaises au monde anglophone, et inversement : interprétariat, traduction, représentation commerciale et prospection, depuis la Côte d'Azur.",
+      cta_talk:"Parler de votre projet", cta_services:"Voir les services",
+      s_title:"Ce que Two Shores fait pour vous",
+      s_intro:"Une seule personne, bilingue de naissance, qui parle, représente et prospecte pour vous dans les deux langues.",
+      sv1_t:"Interprétariat de liaison", sv1_d:"Rendez-vous d'affaires, négociations, visites de sites, dîners clients. Le sens, le ton et les nuances passent, pas seulement les mots.", sv1_p:"dès 250 € la demi-journée",
+      sv2_t:"Traduction et adaptation", sv2_d:"Présentations, propositions commerciales, sites web, fiches produits. Un texte qui sonne natif des deux côtés de la Manche.", sv2_p:"0,10 € le mot",
+      sv3_t:"Accompagnement sur les salons", sv3_d:"Accueil des visiteurs sur votre stand, interprétation, prise de rendez-vous et logistique pendant les grands salons de Cannes et Monaco.", sv3_p:"dès 500 € la journée",
+      sv4_t:"Représentation et prospection", sv4_d:"Recherche de prospects, premiers contacts dans leur langue, rendez-vous et représentation sur place. Un mois test est possible.", sv4_p:"dès 1 500 € par mois",
+      sv5_t:"Ouverture de marché", sv5_d:"Vous arrivez sur la Côte d'Azur, ou vous visez le Royaume-Uni : étude rapide, liste de prospects, messages et premiers rendez-vous.", sv5_p:"sur devis",
+      s_note:"Tarifs HT, hors frais de déplacement.",
+      c_title:"Sur place quand ça compte",
+      c_intro:"La Côte d'Azur accueille chaque année des salons où se croisent acheteurs et décideurs du monde entier. Two Shores y accompagne les exposants, d'un rendez-vous à la semaine complète.",
+      c_note:"Calendrier indicatif : les dates exactes changent chaque année.",
+      m_title:"Comment on travaille", m_intro:"Simple, rapide, sans engagement avant la proposition.",
+      m1_t:"Un échange de 15 minutes", m1_d:"Vous expliquez le contexte : qui vous rencontrez, où, quand et dans quelle langue.",
+      m2_t:"Une proposition sous 48 h", m2_d:"Périmètre, dates et prix fixés à l'avance. Pas de surprise sur la facture.",
+      m3_t:"On s'en occupe", m3_d:"Sur place sur la Côte d'Azur, en déplacement en France ou au Royaume-Uni, ou à distance.",
+      a_title:"Les deux rives, dans la même personne",
+      a_p1:"Je m'appelle Leland Thomas. Père anglais, mère française : j'ai grandi entre les deux langues et les deux cultures, et j'ai vécu à Londres.",
+      a_p2:"Sur la Côte d'Azur, j'ai coordonné la logistique d'événements comme le Grand Prix de Monaco et Cannes Lions, jusqu'à une vingtaine de véhicules à la fois, pour des dirigeants, des sportifs et des artistes. J'y ai appris l'essentiel : être fiable quand tout change à la dernière minute.",
+      a_p3:"Two Shores met cette expérience au service des entreprises qui veulent se faire comprendre, et se faire choisir, de l'autre côté.",
+      f1_t:"Langues", f1_d:"Français et anglais, niveau natif",
+      f2_t:"Basé à", f2_d:"Antibes, entre Cannes, Nice et Monaco",
+      f3_t:"Interventions", f3_d:"En présentiel partout en France et au Royaume-Uni, ou à distance",
+      f4_t:"Secteurs", f4_d:"Événementiel, communication, hôtellerie, yachting, immobilier, sport, tech",
+      k_title:"Parlons de votre projet",
+      k_intro:"Un rendez-vous à préparer, un salon qui approche, un marché à ouvrir ? Écrivez-moi, on en parle.",
+      k_copy:"Copier l'adresse", k_copied:"Adresse copiée", k_small:"Leland Thomas, fondateur de Two Shores",
+      foot:"Interprétariat, traduction et représentation commerciale, depuis la Côte d'Azur",
+      months:["Janv.","Févr.","Mars","Avr.","Mai","Juin","Juil.","Août","Sept.","Oct.","Nov.","Déc."]
+    },
+    en:{
+      nav_prices:"Pricing",
+      p_title:"Tailored pricing",
+      p_intro:"Every assignment is different. Half a day of meetings isn't priced like a week at a trade show or three months of prospecting. After a first conversation, you receive a clear proposal with a fixed price within 48 hours.",
+      p_cta:"Request a proposal",
+      p1_t:"Duration", p1_d:"A few hours, a day, a week, or ongoing monthly support.",
+      p2_t:"Location", p2_d:"On the French Riviera, elsewhere in France, in the UK, or remotely.",
+      p3_t:"Volume", p3_d:"The number of meetings, pages to translate or prospects to contact.",
+      k_reply:"Reply within 24 hours, in French or English.",
+      nav_services:"Services", nav_shows:"Trade shows", nav_about:"About", nav_contact:"Contact",
+      lede:"Two Shores connects French companies with the English-speaking world, and the other way round: interpreting, translation, sales representation and prospecting, from the French Riviera.",
+      cta_talk:"Discuss your project", cta_services:"See the services",
+      s_title:"What Two Shores does for you",
+      s_intro:"One person, bilingual from birth, who speaks, represents and prospects for you in both languages.",
+      sv1_t:"Liaison interpreting", sv1_d:"Business meetings, negotiations, site visits, client dinners. The meaning, the tone and the nuance come across, not just the words.", sv1_p:"from €250 per half-day",
+      sv2_t:"Translation and adaptation", sv2_d:"Decks, sales proposals, websites, product sheets. Copy that reads as native on both sides of the Channel.", sv2_p:"€0.10 per word",
+      sv3_t:"Trade show support", sv3_d:"Welcoming visitors on your stand, interpreting, booking meetings and handling logistics during the major Cannes and Monaco shows.", sv3_p:"from €500 per day",
+      sv4_t:"Representation and prospecting", sv4_d:"Finding prospects, first contact in their language, meetings and in-person representation. A trial month is available.", sv4_p:"from €1,500 per month",
+      sv5_t:"Market entry", sv5_d:"Arriving on the French Riviera, or targeting the UK: a quick study, a prospect list, outreach and first meetings.", sv5_p:"on quote",
+      s_note:"Prices exclude VAT and travel expenses.",
+      c_title:"On the ground when it matters",
+      c_intro:"Every year the French Riviera hosts trade shows where buyers and decision-makers from around the world meet. Two Shores supports exhibitors there, from a single meeting to the whole week.",
+      c_note:"Indicative calendar: exact dates change every year.",
+      m_title:"How we work", m_intro:"Simple, fast, no commitment before the proposal.",
+      m1_t:"A 15-minute call", m1_d:"You explain the context: who you are meeting, where, when and in which language.",
+      m2_t:"A proposal within 48 hours", m2_d:"Scope, dates and price agreed upfront. No surprises on the invoice.",
+      m3_t:"We take it from there", m3_d:"On site on the French Riviera, travelling in France or the UK, or remotely.",
+      a_title:"Both shores, in one person",
+      a_p1:"My name is Leland Thomas. English father, French mother: I grew up between the two languages and cultures, and I've lived in London.",
+      a_p2:"On the French Riviera, I coordinated logistics for events such as the Monaco Grand Prix and Cannes Lions, running up to twenty vehicles at once for executives, athletes and artists. It taught me what matters most: staying reliable when everything changes at the last minute.",
+      a_p3:"Two Shores puts that experience to work for companies that want to be understood, and chosen, on the other side.",
+      f1_t:"Languages", f1_d:"French and English, native level",
+      f2_t:"Based in", f2_d:"Antibes, between Cannes, Nice and Monaco",
+      f3_t:"Working in", f3_d:"In person across France and the UK, or remotely",
+      f4_t:"Sectors", f4_d:"Events, communication, hospitality, yachting, real estate, sport, tech",
+      k_title:"Let's discuss your project",
+      k_intro:"A meeting to prepare, a trade show coming up, a market to open? Write to me and let's talk.",
+      k_copy:"Copy address", k_copied:"Address copied", k_small:"Leland Thomas, founder of Two Shores",
+      foot:"Interpreting, translation and sales representation, from the French Riviera",
+      months:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]
+    }
+  };
+  var EVENTS = [
+    {m:2, n:"MIPIM", fr:"Immobilier, Cannes", en:"Real estate, Cannes"},
+    {m:5, n:"Cannes Lions", fr:"Créativité, Cannes", en:"Creativity, Cannes"},
+    {m:8, n:"Cannes Yachting Festival", fr:"Yachting, Cannes", en:"Yachting, Cannes"},
+    {m:8, n:"Monaco Yacht Show", fr:"Superyachts, Monaco", en:"Superyachts, Monaco"},
+    {m:9, n:"MIPCOM", fr:"Contenus TV, Cannes", en:"TV content, Cannes"},
+    {m:9, n:"TFWA World Exhibition", fr:"Duty free, Cannes", en:"Duty free, Cannes"},
+    {m:10, n:"MAPIC", fr:"Commerce, Cannes", en:"Retail, Cannes"},
+    {m:11, n:"ILTM", fr:"Voyage de luxe, Cannes", en:"Luxury travel, Cannes"}
+  ];
+  var lang = "fr";
+  try { var saved = localStorage.getItem("ts-lang"); if (saved === "en" || saved === "fr") lang = saved; } catch(e) {}
+
+  function renderYear(){
+    var y = document.getElementById("year"); y.innerHTML = "";
+    T[lang].months.forEach(function(label, i){
+      var col = document.createElement("div"); col.className = "month";
+      var b = document.createElement("b"); b.textContent = label; col.appendChild(b);
+      EVENTS.filter(function(e){return e.m === i;}).forEach(function(e){
+        var ev = document.createElement("div"); ev.className = "event"; ev.textContent = e.n;
+        var s = document.createElement("span"); s.textContent = e[lang]; ev.appendChild(s); col.appendChild(ev);
+      });
+      y.appendChild(col);
+    });
+  }
+  function apply(){
+    document.documentElement.lang = lang;
+    document.querySelectorAll("[data-i18n]").forEach(function(el){
+      var k = el.getAttribute("data-i18n"); if (T[lang][k]) el.textContent = T[lang][k];
+    });
+    document.querySelectorAll(".lang button").forEach(function(b){ b.setAttribute("aria-pressed", String(b.dataset.lang === lang)); });
+    renderYear();
+  }
+  document.querySelectorAll(".lang button").forEach(function(b){
+    b.addEventListener("click", function(){ lang = b.dataset.lang; try { localStorage.setItem("ts-lang", lang); } catch(e) {} apply(); });
+  });
+  apply();
+
+  var copyBtn = document.getElementById("copy");
+  copyBtn.addEventListener("click", function(){
+    var text = document.getElementById("mail").textContent;
+    function done(){ copyBtn.textContent = T[lang].k_copied; setTimeout(function(){ copyBtn.textContent = T[lang].k_copy; }, 1800); }
+    function fallback(){ var r = document.createRange(); r.selectNodeContents(document.getElementById("mail")); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); }
+    try { navigator.clipboard.writeText(text).then(done, fallback); } catch(e) { fallback(); }
+  });
+
+  // The Channel: slow water lines between the two shores
+  var c = document.getElementById("channel"), ctx = c.getContext("2d");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var w = 0, h = 0, dpr = 1, t0 = performance.now();
+  function size(){ dpr = Math.min(window.devicePixelRatio || 1, 2); var r = c.getBoundingClientRect(); w = r.width; h = r.height; c.width = Math.round(w*dpr); c.height = Math.round(h*dpr); ctx.setTransform(dpr,0,0,dpr,0,0); }
+  function draw(now){
+    var t = (now - t0) / 1000;
+    var cs = getComputedStyle(document.documentElement);
+    var sea = cs.getPropertyValue("--sea").trim() || "#2A5867";
+    var brass = cs.getPropertyValue("--brass").trim() || "#9C6F22";
+    ctx.clearRect(0,0,w,h);
+    var lines = Math.max(6, Math.round(h / 14));
+    for (var i = 0; i < lines; i++){
+      var base = (i + 0.5) * (h / lines);
+      var amp = 2.2 + 1.6 * Math.sin(i * 0.9);
+      ctx.beginPath();
+      for (var x = 0; x <= w; x += 3){
+        var y = base + Math.sin(x * 0.11 + t * 0.9 + i * 0.7) * amp + Math.sin(x * 0.04 - t * 0.5 + i) * amp * 0.6;
+        if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = sea; ctx.globalAlpha = 0.22 + 0.5 * (0.5 + 0.5 * Math.sin(i * 0.6 + t * 0.3));
+      ctx.lineWidth = 1.4; ctx.stroke();
+    }
+    // a small boat crossing from one shore to the other
+    var p = reduce ? 0.5 : ((t / 14) % 1);
+    var vertical = h > w;
+    var bx = vertical ? w / 2 : p * (w + 30) - 15;
+    var by = vertical ? (1 - p) * (h + 30) - 15 : h / 2;
+    ctx.globalAlpha = 1; ctx.fillStyle = brass;
+    ctx.beginPath(); ctx.arc(bx, by, 4.5, 0, Math.PI * 2); ctx.fill();
+    ctx.globalAlpha = 1;
+    if (!reduce) requestAnimationFrame(draw);
+  }
+  size(); requestAnimationFrame(draw);
+  window.addEventListener("resize", function(){ size(); if (reduce) requestAnimationFrame(draw); });
+})();
+</script>
+</body>
+</html>

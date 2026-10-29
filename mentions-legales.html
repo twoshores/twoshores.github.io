@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mentions légales · Two Shores</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="assets/logo.png">
+<style>
+@font-face{font-family:"Libre Caslon Display";src:url(assets/fonts/libre-caslon-display-latin-400-normal.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Libre Caslon Text";src:url(assets/fonts/libre-caslon-text-latin-400-normal.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Libre Caslon Text";src:url(assets/fonts/libre-caslon-text-latin-400-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Instrument Sans";src:url(assets/fonts/instrument-sans-latin-400-normal.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Instrument Sans";src:url(assets/fonts/instrument-sans-latin-500-normal.woff2) format("woff2");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Instrument Sans";src:url(assets/fonts/instrument-sans-latin-600-normal.woff2) format("woff2");font-weight:600;font-style:normal;font-display:swap}
+html,body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+
+/* Layout: two facing shores split by a living strip of sea; below, one left-aligned column like a ship's log */
+:root{
+  --chalk:#F1F5F4; --paper:#FFFFFF; --ink:#13222A; --muted:#536A73;
+  --sea:#2A5867; --foam:#D3E2E4; --brass:#9C6F22; --line:#C7D5D8;
+  --display:"Libre Caslon Display","Libre Caslon Text",Georgia,"Times New Roman",serif;
+  --serif:"Libre Caslon Text",Georgia,"Times New Roman",serif;
+  --sans:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --chalk:#0E1A20; --paper:#132229; --ink:#E5ECED; --muted:#98AEB5;
+    --sea:#6FA3B4; --foam:#1B3540; --brass:#D6A955; --line:#24414B; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --chalk:#0E1A20; --paper:#132229; --ink:#E5ECED; --muted:#98AEB5;
+  --sea:#6FA3B4; --foam:#1B3540; --brass:#D6A955; --line:#24414B; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--chalk);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--chalk)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* Header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--chalk) 88%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-size:24px;letter-spacing:.01em}
+.brand svg{width:30px;height:20px;flex:none}
+.brand svg path{stroke:var(--sea);stroke-width:2;fill:none;stroke-linecap:round}
+nav{display:flex;align-items:center;gap:22px}
+nav a{text-decoration:none;font-size:15px;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px;background:var(--paper)}
+.lang button{font:600 13px/1 var(--sans);letter-spacing:.04em;border:0;background:transparent;color:var(--muted);padding:7px 11px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--sea);color:var(--chalk)}
+@media (max-width:760px){nav a{display:none}}
+
+/* Hero */
+.hero{padding-block:72px 64px}
+.shores{display:grid;grid-template-columns:1fr 132px 1fr;gap:36px;align-items:stretch}
+.shore{display:flex;flex-direction:column;justify-content:flex-end;gap:18px;min-width:0}
+.shore.en{text-align:left}
+.coord{font-size:14px;color:var(--brass);font-variant-numeric:tabular-nums;margin:0}
+.hero h1,.hero .h1-en{margin:0;font-weight:400;line-height:1.04;text-wrap:balance}
+.hero h1{font-family:var(--display);font-size:clamp(38px,5.6vw,68px)}
+.hero .h1-en{font-family:var(--serif);font-style:italic;font-size:clamp(34px,5vw,60px);color:var(--sea)}
+.channel{width:100%;height:100%;min-height:300px;display:block;border-radius:66px;background:var(--foam)}
+.lede{margin:56px 0 0;max-width:640px;font-size:20px;line-height:1.55;color:var(--ink)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-block;text-decoration:none;font-weight:600;font-size:16px;padding:14px 22px;border-radius:999px;border:1px solid var(--sea)}
+.btn.primary{background:var(--sea);color:var(--chalk)}
+.btn.primary:hover{background:var(--ink);border-color:var(--ink)}
+.btn.ghost{color:var(--sea)}
+.btn.ghost:hover{background:var(--foam)}
+@media (max-width:760px){
+  .hero{padding-block:40px 48px}
+  .shores{grid-template-columns:1fr;gap:22px}
+  .channel{min-height:84px;height:84px;border-radius:42px}
+  .shore.en{text-align:right;align-items:flex-end}
+  .lede{margin-top:36px;font-size:18px}
+}
+
+/* Sections */
+section.block{padding-block:84px;border-top:1px solid var(--line)}
+.block h2{font-family:var(--display);font-weight:400;font-size:clamp(32px,4vw,48px);line-height:1.1;margin:0 0 14px;text-wrap:balance;max-width:20ch}
+.intro{color:var(--muted);max-width:60ch;margin:0 0 44px}
+
+/* Services */
+.services{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.services li{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:32px;padding-block:28px;border-bottom:1px solid var(--line);align-items:baseline}
+.services h3{font-family:var(--serif);font-weight:400;font-size:24px;line-height:1.25;margin:0}
+.services p{margin:0;color:var(--muted);max-width:56ch}
+.price{font-weight:600;color:var(--sea);white-space:nowrap;font-variant-numeric:tabular-nums;text-align:right}
+@media (max-width:860px){
+  .services li{grid-template-columns:1fr;gap:8px}
+  .price{text-align:left}
+}
+.note{font-size:14px;color:var(--muted);margin:18px 0 0}
+
+/* Calendar */
+.yearwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px}
+.year{display:grid;grid-template-columns:repeat(12,minmax(78px,1fr));min-width:940px;border-top:1px solid var(--ink)}
+.month{border-left:1px solid var(--line);padding:10px 10px 18px;min-height:150px;display:flex;flex-direction:column;gap:8px}
+.month:first-child{border-left:0;padding-left:0}
+.month b{font-weight:500;font-size:13px;color:var(--muted)}
+.event{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--brass);padding:8px 9px;font-size:13px;line-height:1.3}
+.event span{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+.month.off .event{display:none}
+
+/* Steps */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;counter-reset:s}
+.steps li{counter-increment:s;display:flex;flex-direction:column;gap:10px}
+.steps li::before{content:counter(s);font-family:var(--display);font-size:56px;line-height:1;color:var(--brass)}
+.steps h3{font-family:var(--serif);font-weight:400;font-size:22px;margin:0}
+.steps p{margin:0;color:var(--muted)}
+@media (max-width:760px){.steps{grid-template-columns:1fr;gap:30px}}
+
+/* About */
+.about{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:56px;align-items:start}
+.about .story p{margin:0 0 18px;max-width:60ch}
+.about .story p:first-child{font-family:var(--serif);font-size:22px;line-height:1.5}
+dl.facts{margin:0;display:grid;gap:18px;padding:28px;background:var(--paper);border:1px solid var(--line);border-radius:6px}
+dl.facts div{display:grid;gap:2px}
+dt{font-size:13px;color:var(--muted)}
+dd{margin:0;font-weight:500}
+@media (max-width:860px){.about{grid-template-columns:1fr;gap:32px}}
+
+/* Pricing */
+.pricing{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:56px;align-items:start}
+.pricing .intro{margin-bottom:28px}
+.factors{list-style:none;margin:0;padding:0;display:grid;border-top:1px solid var(--ink)}
+.factors li{padding-block:20px;border-bottom:1px solid var(--line)}
+.factors h3{font-family:var(--serif);font-weight:400;font-size:22px;margin:0 0 4px}
+.factors p{margin:0;color:var(--muted)}
+@media (max-width:860px){.pricing{grid-template-columns:1fr;gap:32px}}
+
+/* Contact with portrait */
+.contact-grid{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:56px;align-items:center}
+.portrait{margin:0;width:100%;max-width:300px}
+.portrait img{display:block;width:100%;max-width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:150px 150px 6px 6px}
+.portrait figcaption{margin-top:12px;font-size:14px;opacity:.85}
+@media (max-width:760px){.contact-grid{grid-template-columns:1fr;gap:32px}.portrait{max-width:240px}}
+
+/* Contact */
+.contact{background:var(--sea);color:var(--chalk);border-top:0}
+.contact h2{color:var(--chalk)}
+.contact .intro{color:color-mix(in srgb,var(--chalk) 78%,var(--sea))}
+.mailrow{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.mail{font-family:var(--serif);font-size:clamp(24px,3.4vw,38px);user-select:all;overflow-wrap:anywhere}
+.copy{font:600 15px/1 var(--sans);padding:12px 18px;border-radius:999px;border:1px solid var(--chalk);background:transparent;color:var(--chalk);cursor:pointer}
+.copy:hover{background:var(--chalk);color:var(--sea)}
+.contact small{display:block;margin-top:16px;font-size:14px;opacity:.85}
+footer{padding-block:28px;font-size:14px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+</style>
+<style>
+.legal{padding-block:56px 80px}
+.legal h1{font-family:var(--display);font-weight:400;font-size:clamp(34px,4.5vw,52px);margin:0 0 32px}
+.legal h2{font-family:var(--serif);font-weight:400;font-size:24px;margin:40px 0 8px}
+.legal p{max-width:65ch;margin:0 0 12px;color:var(--ink)}
+.legal .back{display:inline-block;margin-bottom:28px;color:var(--sea)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="index.html" aria-label="Two Shores, retour à l'accueil">
+      <svg viewBox="0 0 30 20" aria-hidden="true"><path d="M1 7c3.5-4 7-4 10.5 0s7 4 10.5 0 5.5-3 7-1.5"/><path d="M1 14c3.5-4 7-4 10.5 0s7 4 10.5 0 5.5-3 7-1.5"/></svg>
+      Two Shores
+    </a>
+  </div>
+</header>
+<main class="wrap legal">
+  <a class="back" href="index.html">Retour à l'accueil</a>
+  <h1>Mentions légales</h1>
+
+  <h2>Éditeur du site</h2>
+  <p>Leland Thomas, Antibes (Alpes-Maritimes, France).</p>
+  <p>Contact : twoshores.contact@gmail.com</p>
+  <p>Directeur de la publication : Leland Thomas.</p>
+
+  <h2>Hébergement</h2>
+  <p>Netlify, Inc., 2325 3rd Street, San Francisco, CA 94107, États-Unis. Site : www.netlify.com</p>
+
+  <h2>Données personnelles</h2>
+  <p>Ce site ne comporte ni formulaire, ni compte utilisateur, ni outil de mesure d'audience, et ne dépose aucun cookie. Les polices de caractères sont hébergées sur le même serveur que le site : aucune donnée n'est transmise à un service tiers lors de votre visite.</p>
+  <p>Si vous écrivez à l'adresse ci-dessus, votre message et vos coordonnées sont utilisés uniquement pour vous répondre et assurer le suivi de votre demande. Ils ne sont ni vendus ni cédés. Vous pouvez demander leur consultation, leur rectification ou leur suppression à tout moment en écrivant à la même adresse. Vous pouvez aussi adresser une réclamation à la CNIL (www.cnil.fr).</p>
+
+  <h2>Propriété intellectuelle</h2>
+  <p>Les textes, le logo et les photographies de ce site appartiennent à Leland Thomas. Toute reproduction sans autorisation écrite est interdite.</p>
+</main>
+<footer>
+  <div class="wrap"><span>Two Shores</span><span>Interprétariat, traduction et représentation commerciale, depuis la Côte d'Azur</span></div>
+</footer>
+</body>
+</html>
