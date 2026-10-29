@@ -129,8 +129,12 @@ section.block{padding-block:84px;border-top:1px solid var(--line)}
 
 /* About */
 .about{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:56px;align-items:start}
-.about .story p{margin:0 0 18px;max-width:60ch}
-.about .story p:first-child{font-family:var(--serif);font-size:22px;line-height:1.5}
+.about .story-lede{margin:0 0 28px;max-width:56ch;font-family:var(--serif);font-size:21px;line-height:1.5}
+.exp{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.exp li{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:20px;padding-block:16px;border-bottom:1px solid var(--line);align-items:baseline}
+.exp h3{margin:0;font-family:var(--serif);font-weight:400;font-size:20px}
+.exp p{margin:0;color:var(--muted)}
+@media (max-width:560px){.exp li{grid-template-columns:1fr;gap:4px}}
 dl.facts{margin:0;display:grid;gap:18px;padding:28px;background:var(--paper);border:1px solid var(--line);border-radius:6px}
 dl.facts div{display:grid;gap:2px}
 dt{font-size:13px;color:var(--muted)}
@@ -164,6 +168,41 @@ dd{margin:0;font-weight:500}
 .contact small{display:block;margin-top:16px;font-size:14px;opacity:.85}
 footer{padding-block:28px;font-size:14px;color:var(--muted)}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+
+/* Proposals switcher */
+.propbar{background:var(--ink);color:var(--chalk)}
+.propbar .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;padding-block:14px;font-size:14px}
+.propbar b{font-weight:600}
+.propbar nav{display:flex;gap:6px;flex-wrap:wrap}
+.propbar a{color:var(--chalk);text-decoration:none;font-size:15px;font-weight:600;padding:10px 18px;border-radius:999px;border:1px solid color-mix(in srgb,var(--chalk) 35%,transparent)}
+.propbar a[aria-current="page"]{background:var(--chalk);color:var(--ink)}
+.propbar span{opacity:.8}
+/* Sectors mosaic */
+.mosaic{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.tile{position:relative;margin:0;border-radius:6px;overflow:hidden;aspect-ratio:4/3;background:var(--foam)}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:100%;transition:transform .6s ease,filter .4s ease}
+.tile figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 18px 16px;background:linear-gradient(180deg,rgba(8,22,28,0),rgba(8,22,28,.78));color:#fff;font-family:var(--serif);font-size:22px;line-height:1.2;z-index:2}
+.tile:hover img{transform:scale(1.04)}
+@media (prefers-reduced-motion: reduce){.tile img{transition:none}.tile:hover img{transform:none}}
+@media (max-width:760px){.mosaic{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.tile figcaption{font-size:18px;padding:28px 12px 12px}}
+
+/* V1: two photographic shores */
+.hero.hero-photos{padding-block:0 64px}
+.split{display:grid;grid-template-columns:minmax(0,1fr) 72px minmax(0,1fr);min-height:clamp(440px,64vh,660px)}
+.pane{position:relative;background-size:cover;background-position:center;display:flex;align-items:flex-end;min-width:0}
+.pane::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,22,28,0) 30%,rgba(8,22,28,.74))}
+.pane-in{position:relative;padding:36px clamp(16px,4vw,48px);color:#fff}
+.pane.fr .pane-in{padding-left:max(16px,env(safe-area-inset-left,0px),4vw)}
+.pane.en .pane-in{padding-right:max(16px,env(safe-area-inset-right,0px),4vw)}
+.hero-photos h1{color:#fff;font-family:var(--display);font-weight:400;font-size:clamp(34px,4.6vw,62px);line-height:1.04;margin:0;text-wrap:balance}
+.hero-photos .h1-en{color:#fff;font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(30px,4.2vw,56px);line-height:1.06;margin:0;text-wrap:balance}
+.split .channel{border-radius:0;min-height:0;height:100%}
+.hero-photos .lede{margin-top:48px}
+@media (max-width:760px){
+  .split{grid-template-columns:1fr;min-height:0}
+  .pane{min-height:300px}
+  .split .channel{height:56px}
+}
 </style>
 </head>
 <body>
@@ -188,18 +227,14 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 </header>
 
 <main id="top">
-  <section class="hero">
+  <section class="hero hero-photos">
+    <div class="split">
+      <div class="pane fr" style="background-image:url(assets/photos/riviera.jpg)"><div class="pane-in"><h1 lang="fr">Faites-vous comprendre des deux côtés.</h1></div></div>
+      <canvas class="channel" id="channel" aria-hidden="true"></canvas>
+      <div class="pane en" style="background-image:url(assets/photos/london.jpg)"><div class="pane-in"><p class="h1-en" lang="en">Be understood on both shores.</p></div></div>
+    </div>
     <div class="wrap">
-      <div class="shores">
-        <div class="shore fr">
-          <h1 lang="fr">Faites-vous comprendre des deux côtés.</h1>
-        </div>
-        <canvas class="channel" id="channel" aria-hidden="true"></canvas>
-        <div class="shore en">
-          <p class="h1-en" lang="en">Be understood on both shores.</p>
-        </div>
-      </div>
-      <p class="lede" data-i18n="lede">Two Shores relie les entreprises françaises au monde anglophone, et inversement : interprétariat, traduction, représentation commerciale et prospection, depuis la Côte d'Azur.</p>
+      <p class="lede" data-i18n="lede">Avec Two Shores, je relie les entreprises françaises au monde anglophone, et inversement : interprétariat, traduction, représentation commerciale et prospection, depuis la Côte d'Azur.</p>
       <div class="cta">
         <a class="btn primary" href="#contact" data-i18n="cta_talk">Parler de votre projet</a>
         <a class="btn ghost" href="#services" data-i18n="cta_services">Voir les services</a>
@@ -209,8 +244,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 
   <section class="block" id="services">
     <div class="wrap">
-      <h2 data-i18n="s_title">Ce que Two Shores fait pour vous</h2>
-      <p class="intro" data-i18n="s_intro">Une seule personne, bilingue de naissance, qui parle, représente et prospecte pour vous dans les deux langues.</p>
+      <h2 data-i18n="s_title">Ce que je fais pour vous</h2>
+      <p class="intro" data-i18n="s_intro">Bilingue de naissance, je parle, je représente et je prospecte pour vous dans les deux langues.</p>
       <ul class="services">
         <li>
           <h3 data-i18n="sv1_t">Interprétariat de liaison</h3>
@@ -218,7 +253,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
         </li>
         <li>
           <h3 data-i18n="sv2_t">Traduction et adaptation</h3>
-          <p data-i18n="sv2_d">Présentations, propositions commerciales, sites web, fiches produits. Un texte qui sonne natif des deux côtés de la Manche.</p>
+          <p data-i18n="sv2_d">Présentations, propositions commerciales, sites web, fiches produits. Un texte qui sonne natif dans les deux langues.</p>
         </li>
         <li>
           <h3 data-i18n="sv3_t">Accompagnement sur les salons</h3>
@@ -230,9 +265,24 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
         </li>
         <li>
           <h3 data-i18n="sv5_t">Ouverture de marché</h3>
-          <p data-i18n="sv5_d">Vous arrivez sur la Côte d'Azur, ou vous visez le Royaume-Uni : étude rapide, liste de prospects, messages et premiers rendez-vous.</p>
+          <p data-i18n="sv5_d">Vous arrivez en France, ou vous visez un marché à l'étranger : étude rapide, liste de prospects, messages et premiers rendez-vous.</p>
         </li>
       </ul>
+    </div>
+  </section>
+
+  <section class="block" id="secteurs">
+    <div class="wrap">
+      <h2 data-i18n="sec_title">Les secteurs que j'accompagne</h2>
+      <p class="intro" data-i18n="sec_intro">Des rendez-vous d'affaires aux grands salons internationaux, dans les secteurs où la Côte d'Azur reçoit le monde entier.</p>
+      <div class="mosaic">
+        <figure class="tile"><img src="assets/photos/evenementiel.jpg" alt="" width="800" height="570" loading="lazy"><figcaption data-i18n="sec1">Événementiel</figcaption></figure>
+        <figure class="tile"><img src="assets/photos/communication.jpg" alt="" width="800" height="570" loading="lazy"><figcaption data-i18n="sec2">Communication</figcaption></figure>
+        <figure class="tile"><img src="assets/photos/hotellerie.jpg" alt="" width="800" height="570" loading="lazy"><figcaption data-i18n="sec3">Hôtellerie</figcaption></figure>
+        <figure class="tile"><img src="assets/photos/yachting.jpg" alt="" width="800" height="570" loading="lazy"><figcaption data-i18n="sec4">Yachting</figcaption></figure>
+        <figure class="tile"><img src="assets/photos/immobilier.jpg" alt="" width="800" height="570" loading="lazy"><figcaption data-i18n="sec5">Immobilier</figcaption></figure>
+        <figure class="tile"><img src="assets/photos/sport.jpg" alt="" width="800" height="570" loading="lazy"><figcaption data-i18n="sec6">Sport</figcaption></figure>
+      </div>
     </div>
   </section>
 
@@ -245,7 +295,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
       </div>
       <ul class="factors">
         <li><h3 data-i18n="p1_t">La durée</h3><p data-i18n="p1_d">Quelques heures, une journée, une semaine ou un accompagnement au mois.</p></li>
-        <li><h3 data-i18n="p2_t">Le lieu</h3><p data-i18n="p2_d">Sur la Côte d'Azur, ailleurs en France, au Royaume-Uni ou à distance.</p></li>
+        <li><h3 data-i18n="p2_t">Le lieu</h3><p data-i18n="p2_d">Sur la Côte d'Azur, ailleurs en France, à l'étranger ou à distance.</p></li>
         <li><h3 data-i18n="p3_t">Le volume</h3><p data-i18n="p3_d">Le nombre de rendez-vous, de pages à traduire ou de prospects à contacter.</p></li>
       </ul>
     </div>
@@ -254,7 +304,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   <section class="block" id="salons">
     <div class="wrap">
       <h2 data-i18n="c_title">Sur place quand ça compte</h2>
-      <p class="intro" data-i18n="c_intro">La Côte d'Azur accueille chaque année des salons où se croisent acheteurs et décideurs du monde entier. Two Shores y accompagne les exposants, d'un rendez-vous à la semaine complète.</p>
+      <p class="intro" data-i18n="c_intro">La Côte d'Azur accueille chaque année des salons où se croisent acheteurs et décideurs du monde entier. J'y accompagne les exposants, d'un rendez-vous à la semaine complète.</p>
       <div class="yearwrap" tabindex="0" aria-label="Calendrier des salons">
         <div class="year" id="year"></div>
       </div>
@@ -264,12 +314,12 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 
   <section class="block" id="method">
     <div class="wrap">
-      <h2 data-i18n="m_title">Comment on travaille</h2>
+      <h2 data-i18n="m_title">Comment je travaille</h2>
       <p class="intro" data-i18n="m_intro">Simple, rapide, sans engagement avant la proposition.</p>
       <ol class="steps">
         <li><h3 data-i18n="m1_t">Un échange de 15 minutes</h3><p data-i18n="m1_d">Vous expliquez le contexte : qui vous rencontrez, où, quand et dans quelle langue.</p></li>
         <li><h3 data-i18n="m2_t">Une proposition sous 48 h</h3><p data-i18n="m2_d">Périmètre, dates et prix fixés à l'avance. Pas de surprise sur la facture.</p></li>
-        <li><h3 data-i18n="m3_t">On s'en occupe</h3><p data-i18n="m3_d">Sur place sur la Côte d'Azur, en déplacement en France ou au Royaume-Uni, ou à distance.</p></li>
+        <li><h3 data-i18n="m3_t">Je m'en occupe</h3><p data-i18n="m3_d">Sur place sur la Côte d'Azur, en déplacement partout dans le monde, ou à distance.</p></li>
       </ol>
     </div>
   </section>
@@ -277,15 +327,20 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   <section class="block" id="about">
     <div class="wrap about">
       <div class="story">
-        <h2 data-i18n="a_title">Les deux rives, dans la même personne</h2>
-        <p data-i18n="a_p1">Je m'appelle Leland Thomas. Père anglais, mère française : j'ai grandi entre les deux langues et les deux cultures, et j'ai vécu à Londres.</p>
-        <p data-i18n="a_p2">Sur la Côte d'Azur, j'ai coordonné la logistique d'événements comme le Grand Prix de Monaco et Cannes Lions, jusqu'à une vingtaine de véhicules à la fois, pour des dirigeants, des sportifs et des artistes. J'y ai appris l'essentiel : être fiable quand tout change à la dernière minute.</p>
-        <p data-i18n="a_p3">Two Shores met cette expérience au service des entreprises qui veulent se faire comprendre, et se faire choisir, de l'autre côté.</p>
+        <h2 data-i18n="a_title">Une expérience de terrain</h2>
+        <p class="story-lede" data-i18n="a_intro">Bilingue français-anglais, j'interviens là où se jouent les échanges internationaux : sur les salons, dans les événements et à la table des négociations.</p>
+        <ul class="exp">
+          <li><h3 data-i18n="e1_t">Salons internationaux</h3><p data-i18n="e1_d">Participation à des salons internationaux : rencontre de partenaires, prospection et démarchage sur place.</p></li>
+          <li><h3 data-i18n="e2_t">Événements</h3><p data-i18n="e2_d">Organisation et coordination logistique lors de grands événements à Cannes et Monaco.</p></li>
+          <li><h3 data-i18n="e3_t">Sport</h3><p data-i18n="e3_d">Interprète et intermédiaire entre agents de joueurs et leurs interlocuteurs.</p></li>
+          <li><h3 data-i18n="e4_t">Représentation</h3><p data-i18n="e4_d">Représentant d'agences auprès de clients et de partenaires étrangers.</p></li>
+          <li><h3 data-i18n="e5_t">Prospection</h3><p data-i18n="e5_d">Démarchage d'entreprises et de clients, en français comme en anglais.</p></li>
+        </ul>
       </div>
       <dl class="facts">
         <div><dt data-i18n="f1_t">Langues</dt><dd data-i18n="f1_d">Français et anglais, niveau natif</dd></div>
         <div><dt data-i18n="f2_t">Basé à</dt><dd data-i18n="f2_d">Antibes, entre Cannes, Nice et Monaco</dd></div>
-        <div><dt data-i18n="f3_t">Interventions</dt><dd data-i18n="f3_d">En présentiel partout en France et au Royaume-Uni, ou à distance</dd></div>
+        <div><dt data-i18n="f3_t">Interventions</dt><dd data-i18n="f3_d">En présentiel partout dans le monde, ou à distance</dd></div>
         <div><dt data-i18n="f4_t">Secteurs</dt><dd data-i18n="f4_d">Événementiel, communication, hôtellerie, yachting, immobilier, sport, tech</dd></div>
       </dl>
     </div>
@@ -299,7 +354,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
       </figure>
       <div>
       <h2 data-i18n="k_title">Parlons de votre projet</h2>
-      <p class="intro" data-i18n="k_intro">Un rendez-vous à préparer, un salon qui approche, un marché à ouvrir ? Écrivez-moi, on en parle.</p>
+      <p class="intro" data-i18n="k_intro">Un rendez-vous à préparer, un salon qui approche, un marché à ouvrir ? Écrivez-moi pour en parler.</p>
       <div class="mailrow">
         <span class="mail" id="mail">twoshores.contact@gmail.com</span>
         <button type="button" class="copy" id="copy" data-i18n="k_copy">Copier l'adresse</button>
@@ -321,80 +376,94 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 (function(){
   var T = {
     fr:{
+      sec_title:"Les secteurs que j'accompagne",
+      sec_intro:"Des rendez-vous d'affaires aux grands salons internationaux, dans les secteurs où la Côte d'Azur reçoit le monde entier.",
+      sec1:"Événementiel", sec2:"Communication", sec3:"Hôtellerie", sec4:"Yachting", sec5:"Immobilier", sec6:"Sport",
+      banner_cap:"Cannes, Monaco, Nice : là où le monde vient faire des affaires.",
       nav_prices:"Tarifs",
       p_title:"Des tarifs sur mesure",
       p_intro:"Chaque mission est différente. Une demi-journée de rendez-vous ne se chiffre pas comme une semaine de salon ou trois mois de prospection. Après un premier échange, vous recevez une proposition claire, avec un prix fixe, sous 48 heures.",
       p_cta:"Demander une proposition",
       p1_t:"La durée", p1_d:"Quelques heures, une journée, une semaine ou un accompagnement au mois.",
-      p2_t:"Le lieu", p2_d:"Sur la Côte d'Azur, ailleurs en France, au Royaume-Uni ou à distance.",
+      p2_t:"Le lieu", p2_d:"Sur la Côte d'Azur, ailleurs en France, à l'étranger ou à distance.",
       p3_t:"Le volume", p3_d:"Le nombre de rendez-vous, de pages à traduire ou de prospects à contacter.",
       k_reply:"Réponse sous 24 heures, en français ou en anglais.",
       nav_services:"Services", nav_shows:"Salons", nav_about:"À propos", nav_contact:"Contact",
-      lede:"Two Shores relie les entreprises françaises au monde anglophone, et inversement : interprétariat, traduction, représentation commerciale et prospection, depuis la Côte d'Azur.",
+      lede:"Avec Two Shores, je relie les entreprises françaises au monde anglophone, et inversement : interprétariat, traduction, représentation commerciale et prospection, depuis la Côte d'Azur.",
       cta_talk:"Parler de votre projet", cta_services:"Voir les services",
-      s_title:"Ce que Two Shores fait pour vous",
-      s_intro:"Une seule personne, bilingue de naissance, qui parle, représente et prospecte pour vous dans les deux langues.",
+      s_title:"Ce que je fais pour vous",
+      s_intro:"Bilingue de naissance, je parle, je représente et je prospecte pour vous dans les deux langues.",
       sv1_t:"Interprétariat de liaison", sv1_d:"Rendez-vous d'affaires, négociations, visites de sites, dîners clients. Le sens, le ton et les nuances passent, pas seulement les mots.", sv1_p:"dès 250 € la demi-journée",
-      sv2_t:"Traduction et adaptation", sv2_d:"Présentations, propositions commerciales, sites web, fiches produits. Un texte qui sonne natif des deux côtés de la Manche.", sv2_p:"0,10 € le mot",
+      sv2_t:"Traduction et adaptation", sv2_d:"Présentations, propositions commerciales, sites web, fiches produits. Un texte qui sonne natif dans les deux langues.", sv2_p:"0,10 € le mot",
       sv3_t:"Accompagnement sur les salons", sv3_d:"Accueil des visiteurs sur votre stand, interprétation, prise de rendez-vous et logistique pendant les grands salons de Cannes et Monaco.", sv3_p:"dès 500 € la journée",
       sv4_t:"Représentation et prospection", sv4_d:"Recherche de prospects, premiers contacts dans leur langue, rendez-vous et représentation sur place. Un mois test est possible.", sv4_p:"dès 1 500 € par mois",
-      sv5_t:"Ouverture de marché", sv5_d:"Vous arrivez sur la Côte d'Azur, ou vous visez le Royaume-Uni : étude rapide, liste de prospects, messages et premiers rendez-vous.", sv5_p:"sur devis",
+      sv5_t:"Ouverture de marché", sv5_d:"Vous arrivez en France, ou vous visez un marché à l'étranger : étude rapide, liste de prospects, messages et premiers rendez-vous.", sv5_p:"sur devis",
       s_note:"Tarifs HT, hors frais de déplacement.",
       c_title:"Sur place quand ça compte",
-      c_intro:"La Côte d'Azur accueille chaque année des salons où se croisent acheteurs et décideurs du monde entier. Two Shores y accompagne les exposants, d'un rendez-vous à la semaine complète.",
+      c_intro:"La Côte d'Azur accueille chaque année des salons où se croisent acheteurs et décideurs du monde entier. J'y accompagne les exposants, d'un rendez-vous à la semaine complète.",
       c_note:"Calendrier indicatif : les dates exactes changent chaque année.",
-      m_title:"Comment on travaille", m_intro:"Simple, rapide, sans engagement avant la proposition.",
+      m_title:"Comment je travaille", m_intro:"Simple, rapide, sans engagement avant la proposition.",
       m1_t:"Un échange de 15 minutes", m1_d:"Vous expliquez le contexte : qui vous rencontrez, où, quand et dans quelle langue.",
       m2_t:"Une proposition sous 48 h", m2_d:"Périmètre, dates et prix fixés à l'avance. Pas de surprise sur la facture.",
-      m3_t:"On s'en occupe", m3_d:"Sur place sur la Côte d'Azur, en déplacement en France ou au Royaume-Uni, ou à distance.",
-      a_title:"Les deux rives, dans la même personne",
-      a_p1:"Je m'appelle Leland Thomas. Père anglais, mère française : j'ai grandi entre les deux langues et les deux cultures, et j'ai vécu à Londres.",
-      a_p2:"Sur la Côte d'Azur, j'ai coordonné la logistique d'événements comme le Grand Prix de Monaco et Cannes Lions, jusqu'à une vingtaine de véhicules à la fois, pour des dirigeants, des sportifs et des artistes. J'y ai appris l'essentiel : être fiable quand tout change à la dernière minute.",
-      a_p3:"Two Shores met cette expérience au service des entreprises qui veulent se faire comprendre, et se faire choisir, de l'autre côté.",
+      m3_t:"Je m'en occupe", m3_d:"Sur place sur la Côte d'Azur, en déplacement partout dans le monde, ou à distance.",
+      a_title:"Une expérience de terrain",
+      a_intro:"Bilingue français-anglais, j'interviens là où se jouent les échanges internationaux : sur les salons, dans les événements et à la table des négociations.",
+      e1_t:"Salons internationaux", e1_d:"Participation à des salons internationaux : rencontre de partenaires, prospection et démarchage sur place.",
+      e2_t:"Événements", e2_d:"Organisation et coordination logistique lors de grands événements à Cannes et Monaco.",
+      e3_t:"Sport", e3_d:"Interprète et intermédiaire entre agents de joueurs et leurs interlocuteurs.",
+      e4_t:"Représentation", e4_d:"Représentant d'agences auprès de clients et de partenaires étrangers.",
+      e5_t:"Prospection", e5_d:"Démarchage d'entreprises et de clients, en français comme en anglais.",
       f1_t:"Langues", f1_d:"Français et anglais, niveau natif",
       f2_t:"Basé à", f2_d:"Antibes, entre Cannes, Nice et Monaco",
-      f3_t:"Interventions", f3_d:"En présentiel partout en France et au Royaume-Uni, ou à distance",
+      f3_t:"Interventions", f3_d:"En présentiel partout dans le monde, ou à distance",
       f4_t:"Secteurs", f4_d:"Événementiel, communication, hôtellerie, yachting, immobilier, sport, tech",
       k_title:"Parlons de votre projet",
-      k_intro:"Un rendez-vous à préparer, un salon qui approche, un marché à ouvrir ? Écrivez-moi, on en parle.",
+      k_intro:"Un rendez-vous à préparer, un salon qui approche, un marché à ouvrir ? Écrivez-moi pour en parler.",
       k_copy:"Copier l'adresse", k_copied:"Adresse copiée", k_small:"Leland Thomas, fondateur de Two Shores",
       foot:"Interprétariat, traduction et représentation commerciale, depuis la Côte d'Azur",
       months:["Janv.","Févr.","Mars","Avr.","Mai","Juin","Juil.","Août","Sept.","Oct.","Nov.","Déc."]
     },
     en:{
+      sec_title:"Sectors I work with",
+      sec_intro:"From business meetings to major international trade shows, in the sectors where the French Riviera welcomes the world.",
+      sec1:"Events", sec2:"Communication", sec3:"Hospitality", sec4:"Yachting", sec5:"Real estate", sec6:"Sport",
+      banner_cap:"Cannes, Monaco, Nice: where the world comes to do business.",
       nav_prices:"Pricing",
       p_title:"Tailored pricing",
       p_intro:"Every assignment is different. Half a day of meetings isn't priced like a week at a trade show or three months of prospecting. After a first conversation, you receive a clear proposal with a fixed price within 48 hours.",
       p_cta:"Request a proposal",
       p1_t:"Duration", p1_d:"A few hours, a day, a week, or ongoing monthly support.",
-      p2_t:"Location", p2_d:"On the French Riviera, elsewhere in France, in the UK, or remotely.",
+      p2_t:"Location", p2_d:"On the French Riviera, elsewhere in France, abroad, or remotely.",
       p3_t:"Volume", p3_d:"The number of meetings, pages to translate or prospects to contact.",
       k_reply:"Reply within 24 hours, in French or English.",
       nav_services:"Services", nav_shows:"Trade shows", nav_about:"About", nav_contact:"Contact",
-      lede:"Two Shores connects French companies with the English-speaking world, and the other way round: interpreting, translation, sales representation and prospecting, from the French Riviera.",
+      lede:"With Two Shores, I connect French companies with the English-speaking world, and the other way round: interpreting, translation, sales representation and prospecting, from the French Riviera.",
       cta_talk:"Discuss your project", cta_services:"See the services",
-      s_title:"What Two Shores does for you",
-      s_intro:"One person, bilingual from birth, who speaks, represents and prospects for you in both languages.",
+      s_title:"What I do for you",
+      s_intro:"Bilingual from birth, I speak, represent and prospect for you in both languages.",
       sv1_t:"Liaison interpreting", sv1_d:"Business meetings, negotiations, site visits, client dinners. The meaning, the tone and the nuance come across, not just the words.", sv1_p:"from €250 per half-day",
-      sv2_t:"Translation and adaptation", sv2_d:"Decks, sales proposals, websites, product sheets. Copy that reads as native on both sides of the Channel.", sv2_p:"€0.10 per word",
+      sv2_t:"Translation and adaptation", sv2_d:"Decks, sales proposals, websites, product sheets. Copy that reads as native in both languages.", sv2_p:"€0.10 per word",
       sv3_t:"Trade show support", sv3_d:"Welcoming visitors on your stand, interpreting, booking meetings and handling logistics during the major Cannes and Monaco shows.", sv3_p:"from €500 per day",
       sv4_t:"Representation and prospecting", sv4_d:"Finding prospects, first contact in their language, meetings and in-person representation. A trial month is available.", sv4_p:"from €1,500 per month",
-      sv5_t:"Market entry", sv5_d:"Arriving on the French Riviera, or targeting the UK: a quick study, a prospect list, outreach and first meetings.", sv5_p:"on quote",
+      sv5_t:"Market entry", sv5_d:"Arriving in France, or targeting a market abroad: a quick study, a prospect list, outreach and first meetings.", sv5_p:"on quote",
       s_note:"Prices exclude VAT and travel expenses.",
       c_title:"On the ground when it matters",
-      c_intro:"Every year the French Riviera hosts trade shows where buyers and decision-makers from around the world meet. Two Shores supports exhibitors there, from a single meeting to the whole week.",
+      c_intro:"Every year the French Riviera hosts trade shows where buyers and decision-makers from around the world meet. I support exhibitors there, from a single meeting to the whole week.",
       c_note:"Indicative calendar: exact dates change every year.",
-      m_title:"How we work", m_intro:"Simple, fast, no commitment before the proposal.",
+      m_title:"How I work", m_intro:"Simple, fast, no commitment before the proposal.",
       m1_t:"A 15-minute call", m1_d:"You explain the context: who you are meeting, where, when and in which language.",
       m2_t:"A proposal within 48 hours", m2_d:"Scope, dates and price agreed upfront. No surprises on the invoice.",
-      m3_t:"We take it from there", m3_d:"On site on the French Riviera, travelling in France or the UK, or remotely.",
-      a_title:"Both shores, in one person",
-      a_p1:"My name is Leland Thomas. English father, French mother: I grew up between the two languages and cultures, and I've lived in London.",
-      a_p2:"On the French Riviera, I coordinated logistics for events such as the Monaco Grand Prix and Cannes Lions, running up to twenty vehicles at once for executives, athletes and artists. It taught me what matters most: staying reliable when everything changes at the last minute.",
-      a_p3:"Two Shores puts that experience to work for companies that want to be understood, and chosen, on the other side.",
+      m3_t:"I take it from there", m3_d:"On site on the French Riviera, travelling anywhere in the world, or remotely.",
+      a_title:"Hands-on experience",
+      a_intro:"Fluent in French and English, I work where international business happens: at trade shows, at events and around the negotiating table.",
+      e1_t:"International trade shows", e1_d:"Attending international trade shows: meeting partners, prospecting and reaching out to companies on site.",
+      e2_t:"Events", e2_d:"Organising and coordinating logistics during major events in Cannes and Monaco.",
+      e3_t:"Sport", e3_d:"Interpreter and go-between for football agents and the people they deal with.",
+      e4_t:"Representation", e4_d:"Representing agencies with clients and partners abroad.",
+      e5_t:"Prospecting", e5_d:"Reaching out to companies and clients, in French and in English.",
       f1_t:"Languages", f1_d:"French and English, native level",
       f2_t:"Based in", f2_d:"Antibes, between Cannes, Nice and Monaco",
-      f3_t:"Working in", f3_d:"In person across France and the UK, or remotely",
+      f3_t:"Working in", f3_d:"In person anywhere in the world, or remotely",
       f4_t:"Sectors", f4_d:"Events, communication, hospitality, yachting, real estate, sport, tech",
       k_title:"Let's discuss your project",
       k_intro:"A meeting to prepare, a trade show coming up, a market to open? Write to me and let's talk.",
@@ -450,7 +519,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   });
 
   // The Channel: slow water lines between the two shores
-  var c = document.getElementById("channel"), ctx = c.getContext("2d");
+  var c = document.getElementById("channel"); if (!c) return; var ctx = c.getContext("2d");
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var w = 0, h = 0, dpr = 1, t0 = performance.now();
   function size(){ dpr = Math.min(window.devicePixelRatio || 1, 2); var r = c.getBoundingClientRect(); w = r.width; h = r.height; c.width = Math.round(w*dpr); c.height = Math.round(h*dpr); ctx.setTransform(dpr,0,0,dpr,0,0); }
