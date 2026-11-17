@@ -191,6 +191,10 @@ section.offer{background:var(--word);color:var(--ontint);border-top:0}
 .contact{text-align:left}
 .mailrow{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:8px}
 .mail{font:600 clamp(20px,3.4vw,40px)/1.15 var(--display);overflow-wrap:anywhere;user-select:all}
+.warow{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:18px}
+.wanum{font:600 clamp(18px,2.6vw,28px)/1.2 var(--display);color:var(--text);text-decoration:none;white-space:nowrap}
+.pill.wa{border-color:#25D366;box-shadow:0 0 0 1px color-mix(in srgb,#25D366 14%,transparent),0 0 16px color-mix(in srgb,#25D366 32%,transparent),inset 0 0 10px color-mix(in srgb,#25D366 10%,transparent)}
+.pill.wa svg{width:18px;height:18px;flex:none;fill:#25D366}
 .contact small{display:block;margin-top:18px;color:var(--muted);font-size:15px}
 footer{border-top:1px solid var(--line);padding-block:28px;font-size:14px;color:var(--muted)}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
@@ -365,6 +369,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
         <span class="mail" id="mail">twoshores.contact@gmail.com</span>
         <button type="button" class="pill" id="copy" data-i18n="k_copy">Copier l'adresse</button>
       </div>
+      <div class="warow">
+        <a class="wanum" href="https://wa.me/33643626012" target="_blank" rel="noopener">+33 6 43 62 60 12</a>
+        <a class="pill wa" id="wa" href="https://wa.me/33643626012" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.23 8.23 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.35-.76-1.84-.2-.48-.41-.42-.56-.43h-.48a.92.92 0 0 0-.66.31c-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29Z"/></svg><span data-i18n="k_wa">Écrire sur WhatsApp</span></a>
+      </div>
       <small data-i18n="k_small">Réponse sous 24 heures, en français ou en anglais.</small>
     </div>
   </section>
@@ -409,7 +417,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
       st2_t:"Une proposition sous 48 h",st2_d:"Périmètre, dates et prix fixés à l'avance.",
       st3_t:"Nous nous en occupons",st3_d:"Sur place sur la Côte d'Azur, en déplacement partout dans le monde, ou à distance.",
       o_eyebrow:"Pour commencer",o_title:"Votre première prestation est offerte",o1_t:"Une vidéo courte et 10 photos retouchées",o1_d:"Une demi-journée de tournage chez vous.",o2_t:"Le service français-anglais de votre choix",o2_d:"Traduction, interprétariat, rendez-vous, appel ou salon. Dans les deux sens.",o_note:"Sans engagement. En échange, votre avis et l'accord de montrer le résultat. Une par entreprise.",o_cta:"Je veux ma prestation offerte",o_subject:"Première prestation offerte",
-      k_eyebrow:"Contact",k_title:"Parlons de votre projet",k_copy:"Copier l'adresse",k_copied:"Adresse copiée",k_small:"Réponse sous 24 heures, en français ou en anglais.",
+      k_eyebrow:"Contact",k_title:"Parlons de votre projet",k_copy:"Copier l'adresse",k_copied:"Adresse copiée",k_small:"Réponse sous 24 heures, en français ou en anglais.",k_wa:"Écrire sur WhatsApp",k_wa_text:"Bonjour Two Shores, j'aimerais parler d'un projet.",
       foot:"Interprétariat, traduction, prospection et communication visuelle, depuis la Côte d'Azur",
       sectors:["Événementiel","Salons","Vignobles","Hôtellerie","Conciergeries","Concessions","Agences de location","Clubs sportifs","Yachting","Immobilier","Commerces"]},
     en:{who_w:"Interpreting · Translation · Prospecting",who_i:"Video · Photo · Drone · Social",nav_services:"Services",nav_team:"Team",nav_contact:"Contact",tag_word:"Words",tag_image:"Images",
@@ -441,7 +449,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
       st2_t:"A proposal within 48 hours",st2_d:"Scope, dates and price agreed upfront.",
       st3_t:"We take it from there",st3_d:"On site on the French Riviera, travelling anywhere in the world, or remotely.",
       o_eyebrow:"To get started",o_title:"Your first service is on us",o1_t:"A short video and 10 edited photos",o1_d:"Half a day of filming at your place.",o2_t:"The French-English service of your choice",o2_d:"Translation, interpreting, a meeting, a call or a trade show. Both ways.",o_note:"No commitment. In return, your feedback and permission to show the result. One per company.",o_cta:"Claim my free service",o_subject:"Free first service",
-      k_eyebrow:"Contact",k_title:"Let's discuss your project",k_copy:"Copy address",k_copied:"Address copied",k_small:"Reply within 24 hours, in French or English.",
+      k_eyebrow:"Contact",k_title:"Let's discuss your project",k_copy:"Copy address",k_copied:"Address copied",k_small:"Reply within 24 hours, in French or English.",k_wa:"Message on WhatsApp",k_wa_text:"Hello Two Shores, I'd like to discuss a project.",
       foot:"Interpreting, translation, prospecting and visual communication, from the French Riviera",
       sectors:["Events","Trade shows","Wineries","Hospitality","Concierge services","Car dealerships","Rental agencies","Sports clubs","Yachting","Real estate","Retail"]}
   };
@@ -453,7 +461,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
     document.querySelectorAll("[data-i18n]").forEach(function(el){var k=el.getAttribute("data-i18n");if(T[lang][k])el.textContent=T[lang][k];});
     document.querySelectorAll(".lang button").forEach(function(b){b.setAttribute("aria-pressed",String(b.dataset.lang===lang));});
     ticker();
-    var oc=document.getElementById("offer-cta");if(oc)oc.href="mailto:twoshores.contact@gmail.com?subject="+encodeURIComponent(T[lang].o_subject);
+    var oc=document.getElementById("offer-cta");var wa=document.getElementById("wa");if(wa)wa.href="https://wa.me/33643626012?text="+encodeURIComponent(T[lang].k_wa_text);
+    if(oc)oc.href="mailto:twoshores.contact@gmail.com?subject="+encodeURIComponent(T[lang].o_subject);
   }
   document.querySelectorAll(".lang button").forEach(function(b){b.addEventListener("click",function(){lang=b.dataset.lang;try{localStorage.setItem("ts-lang",lang);}catch(e){}apply();});});
   apply();
